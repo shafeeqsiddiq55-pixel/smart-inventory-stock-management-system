@@ -1,0 +1,491 @@
+
+Act as a senior Full Stack Web Developer with 15+ years of experience in HTML, CSS, JavaScript, PHP/Python, and MySQL. Design and develop a modern, fully responsive, professional Fruit & Dry Fruits Shop Management System.
+
+## Project Overview
+
+Develop a complete e-commerce web application for a Fruit & Dry Fruits Shop where:
+
+* Customers can create an account, log in, browse products, add items to their cart, and place orders.
+* The Admin can securely log in, manage products, categories, orders, customers, and inventory through a dedicated admin dashboard.
+
+The application should have a premium, modern UI/UX with smooth animations, attractive colors, and mobile responsiveness.
+
+---
+
+# Technologies
+
+Frontend:
+
+* HTML5
+* CSS3
+* JavaScript (Vanilla JS)
+
+Backend:
+
+* PHP or Python (Flask)
+
+Database:
+
+* MySQL
+
+---
+
+# User Module
+
+## Authentication
+
+Users should be able to:
+
+* Register a new account
+* Login securely
+* Logout
+* Forgot Password (optional)
+* Edit Profile
+* Change Password
+
+Registration fields:
+
+* Full Name
+* Email Address
+* Phone Number
+* Password
+* Confirm Password
+* Address
+
+---
+
+## Home Page
+
+The homepage should include:
+
+* Navigation Bar
+* Shop Logo
+* Search Bar
+* Hero Banner
+* Featured Products
+* Categories
+* Best Selling Products
+* Seasonal Offers
+* Customer Reviews
+* Why Choose Us Section
+* Footer
+
+---
+
+## Categories
+
+Create categories such as:
+
+* Fresh Fruits
+* Dry Fruits
+* Organic Fruits
+* Imported Fruits
+* Fruit Combos
+* Gift Packs
+
+---
+
+## Product Details
+
+Every product should display:
+
+* Product Image
+* Product Name
+* Category
+* Description
+* Price
+* Discount Price
+* Stock Available
+* Weight Options (250g, 500g, 1kg, etc.)
+* Nutritional Information
+* Health Benefits
+* Customer Rating
+* Reviews
+* Add to Cart Button
+* Buy Now Button
+* Wishlist Button
+
+---
+
+## Search
+
+Allow searching products by:
+
+* Name
+* Category
+* Price
+* Availability
+
+---
+
+## Filters
+
+Users should be able to filter by:
+
+* Category
+* Price Range
+* Ratings
+* New Arrivals
+* Best Sellers
+* Organic Products
+
+---
+
+## Shopping Cart
+
+Features:
+
+* Add Product
+* Remove Product
+* Update Quantity
+* Total Price
+* Apply Coupon
+* Delivery Charge
+* Grand Total
+
+---
+
+## Checkout
+
+Collect:
+
+* Delivery Address
+* Phone Number
+* Payment Method
+
+Payment Options:
+
+* Cash on Delivery
+* UPI
+* Debit Card
+* Credit Card
+
+Show:
+
+* Order Summary
+* Estimated Delivery Date
+
+---
+
+## Order Management
+
+Users should be able to:
+
+* View Orders
+* Cancel Orders
+* Download Invoice
+* Track Order Status
+
+Order status:
+
+* Pending
+* Confirmed
+* Packed
+* Shipped
+* Out for Delivery
+* Delivered
+* Cancelled
+
+---
+
+## Wishlist
+
+Allow users to:
+
+* Add products
+* Remove products
+* Move to Cart
+
+---
+
+## User Profile
+
+Include:
+
+* Personal Information
+* Address
+* Order History
+* Wishlist
+* Saved Payment Methods
+* Account Settings
+
+---
+
+# Admin Module
+
+Admin login must be completely separate from the customer login.
+
+Only an admin can access the Admin Dashboard.
+
+Admin credentials:
+
+* Admin Email
+* Password
+
+Do not allow normal users to access the admin dashboard.
+
+---
+
+# Admin Dashboard
+
+Display cards showing:
+
+* Total Products
+* Total Customers
+* Total Orders
+* Pending Orders
+* Delivered Orders
+* Total Revenue
+* Low Stock Products
+* Out of Stock Products
+
+Also include charts for:
+
+* Monthly Sales
+* Revenue
+* Product Sales
+* Customer Growth
+
+---
+
+# Product Management
+
+Admin can:
+
+* Add Product
+* Edit Product
+* Delete Product
+* Upload Multiple Images
+* Set Category
+* Update Stock
+* Add Product Description
+* Add Nutrition Details
+* Add Discount
+* Mark Featured Product
+
+---
+
+# Category Management
+
+Admin can:
+
+* Add Category
+* Edit Category
+* Delete Category
+
+---
+
+# Inventory Management
+
+Admin can:
+
+* Increase Stock
+* Decrease Stock
+* View Available Stock
+* Low Stock Alerts
+* Out of Stock Alerts
+
+---
+
+# Customer Management
+
+Admin can:
+
+* View Customers
+* Search Customers
+* Update Customer Status
+* Block Customers
+* Delete Customers
+
+---
+
+# Order Management
+
+Admin can:
+
+* View Orders
+* Accept Orders
+* Reject Orders
+* Update Order Status
+* Print Invoice
+* View Customer Details
+
+---
+
+# Sales Reports
+
+Generate reports for:
+
+* Daily Sales
+* Weekly Sales
+* Monthly Sales
+* Yearly Sales
+* Most Sold Products
+* Least Sold Products
+
+---
+
+# Offers & Discounts
+
+Admin can:
+
+* Add Coupons
+* Create Festival Offers
+* Add Discount Percentage
+* Set Expiry Date
+
+---
+
+# Contact Management
+
+Customer can send messages.
+
+Admin can:
+
+* View Messages
+* Reply
+* Delete Messages
+
+---
+
+# Notifications
+
+Show notifications for:
+
+* New Orders
+* Low Stock
+* New Customer Registration
+* Successful Orders
+
+---
+
+# Database Tables
+
+Create proper normalized MySQL tables:
+
+* admins
+* users
+* categories
+* products
+* product_images
+* cart
+* wishlist
+* orders
+* order_items
+* payments
+* coupons
+* reviews
+* contact_messages
+* inventory
+* notifications
+
+Include:
+
+* Primary Keys
+* Foreign Keys
+* Relationships
+* Constraints
+
+---
+
+# Security
+
+Implement:
+
+* Password hashing
+* SQL Injection prevention
+* Form validation
+* Session management
+* Secure login authentication
+* Input sanitization
+
+---
+
+# UI/UX Requirements
+
+Design should be:
+
+* Modern
+* Premium
+* Elegant
+* Responsive
+* Mobile Friendly
+* Tablet Friendly
+* Desktop Friendly
+
+Use:
+
+* Smooth animations
+* Hover effects
+* Beautiful cards
+* Rounded corners
+* Soft shadows
+* Attractive color palette
+* Professional typography
+* High-quality fruit images
+* Clean spacing
+
+---
+
+# Pages Required
+
+Customer Pages:
+
+* Home
+* Login
+* Register
+* Products
+* Product Details
+* Categories
+* Cart
+* Wishlist
+* Checkout
+* Orders
+* Profile
+* Contact
+* About Us
+* FAQ
+
+Admin Pages:
+
+* Admin Login
+* Dashboard
+* Manage Products
+* Manage Categories
+* Manage Customers
+* Manage Orders
+* Inventory
+* Reports
+* Coupons
+* Messages
+* Settings
+
+---
+
+# Additional Features
+
+* Responsive Navigation Bar
+* Sticky Header
+* Scroll to Top Button
+* Loading Animation
+* Image Slider
+* Product Image Zoom
+* Related Products
+* Recently Viewed Products
+* Dark Mode Toggle
+* Pagination
+* Breadcrumb Navigation
+* Footer with Social Media Links
+
+---
+
+# Code Requirements
+
+* Write clean, modular, and well-commented code.
+* Use separate folders for HTML, CSS, JavaScript, images, and backend files.
+* Follow proper naming conventions.
+* Ensure all CRUD operations work correctly.
+* Use AJAX or Fetch API where appropriate to improve user experience.
+* Optimize for performance and maintainability.
+
+The final project should resemble a real-world e-commerce website suitable for deployment and include a complete database schema, functional authentication, admin panel, shopping cart, checkout, and order management system.

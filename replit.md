@@ -1,36 +1,55 @@
-# [Project name]
+# Fruit & Dry Fruits Shop Management System
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A full-stack e-commerce web application for a premium fruit and dry fruits shop, featuring a beautiful customer storefront and a complete admin dashboard.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 8080)
+- `pnpm --filter @workspace/fruit-shop run dev` — run the frontend (auto-assigned port)
 - `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Required env: `DATABASE_URL`, `SESSION_SECRET`
+
+## Default Credentials (dev seed data)
+
+- **Admin login:** admin@fruitshop.com / password123 → /admin/login
+- **Customer login:** priya@example.com / password123 → /login
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
+- Frontend: React + Vite + Tailwind CSS + Framer Motion + Recharts
+- Backend: Express 5 + PostgreSQL + Drizzle ORM
+- Auth: JWT (jsonwebtoken + bcryptjs), stored in localStorage
+- API codegen: Orval (from OpenAPI spec in lib/api-spec/openapi.yaml)
 - Build: esbuild (CJS bundle)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `lib/api-spec/openapi.yaml` — single source of truth for API contracts
+- `lib/db/src/schema/` — Drizzle ORM table definitions (users, categories, products, cart, wishlist, orders, reviews, coupons, contact)
+- `artifacts/api-server/src/routes/` — Express route handlers (auth, categories, products, cart, wishlist, orders, reviews, coupons, contact, admin)
+- `artifacts/api-server/src/lib/auth.ts` — JWT sign/verify helpers
+- `artifacts/api-server/src/middlewares/authenticate.ts` — authenticate, requireAdmin, optionalAuth middleware
+- `artifacts/fruit-shop/src/` — React frontend
+  - `hooks/use-auth.tsx` — AuthProvider + useAuth (React context, localStorage backed)
+  - `pages/customer/` — storefront pages (home, products, product-detail, cart, wishlist, checkout, orders, profile, about, contact, faq, categories)
+  - `pages/admin/` — admin pages (dashboard, products, orders, categories, customers, inventory, coupons, messages, reports)
+  - `pages/auth/` — login, register
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- JWT auth stored in localStorage (fruit_shop_token + fruit_shop_user); custom-fetch.ts injects Authorization header automatically
+- Auth context uses React context + useState (not zustand) to avoid duplicate React instance errors
+- Products endpoint /products/featured and /products/bestsellers use fixed paths before /:id to avoid param collision in Express
+- bcryptjs used for password hashing; admin and customer login are separate endpoints (/admin/login vs /auth/login)
+- Cart is rebuilt fresh from DB on every mutation (buildCart function) to ensure consistency
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Customer: Browse products, filter/search, view product details, add to cart/wishlist, checkout, track orders, write reviews, contact
+- Admin: Dashboard with stats+charts, manage products/categories/orders/customers/inventory/coupons/messages
 
 ## User preferences
 
@@ -38,7 +57,10 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- After spec changes, always run codegen: `pnpm --filter @workspace/api-spec run codegen`
+- Do NOT use `format: email` in openapi.yaml — Orval generates `zod.email()` which doesn't exist in this Zod version
+- Express 5 wildcard routes use `/{*splat}` syntax not bare `*`
+- `req.params.id` is `string | string[]` — always parse with `parseInt(Array.isArray(...) ? ...[0] : ..., 10)`
 
 ## Pointers
 

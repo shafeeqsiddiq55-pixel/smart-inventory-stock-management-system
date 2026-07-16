@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "Fruit & Dry Fruits Shop"
+version = "1.0.0"
+id = "artifacts/fruit-shop"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19582
+
+[services.development]
+run = "pnpm --filter @workspace/fruit-shop run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/fruit-shop", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/fruit-shop/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19582"
+BASE_PATH = "/"
