@@ -16,7 +16,7 @@ export function Footer() {
                 <Leaf className="w-5 h-5" />
               </div>
               <span className="font-serif text-2xl font-bold tracking-tight text-foreground">
-                Natura
+                ARK PALAMUTHIR NILAYAM
               </span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -100,15 +100,23 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-sm text-muted-foreground">
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
-                <span>123 Market Street, Suite 100<br/>San Francisco, CA 94105</span>
+                <span>
+                  ARK PALAMUTHIR NILAYAM
+                  <br />
+                  Anna Silai Road
+                  <br />
+                  Karumandisellipalayam
+                  <br />
+                  Tamil Nadu - 638052
+                </span>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 98659 73999</span>
               </li>
               <li className="flex items-center gap-3 text-sm text-muted-foreground">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                <span>hello@naturafruits.com</span>
+                <span>arkpalamuthir@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -116,7 +124,7 @@ export function Footer() {
 
         <div className="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Natura Premium Fruits. All rights reserved.
+            © {new Date().getFullYear()} ARK PALAMUTHIR NILAYAM Premium Fruits. All rights reserved.
           </p>
           <div className="flex gap-4">
             <span className="text-sm text-muted-foreground hover:text-foreground cursor-pointer">Privacy Policy</span>

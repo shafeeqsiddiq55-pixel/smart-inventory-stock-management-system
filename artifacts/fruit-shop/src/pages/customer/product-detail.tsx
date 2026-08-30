@@ -1,5 +1,13 @@
 import { CustomerLayout } from '@/components/layout/customer-layout';
-import { useGetProduct, useGetRelatedProducts, useListProductReviews, useAddToCart, useAddToWishlist, getGetCartQueryKey } from '@workspace/api-client-react';
+import {
+  useGetProduct,
+  useGetRelatedProducts,
+  useListProductReviews,
+  useAddToCart,
+  useAddToWishlist,
+  getGetCartQueryKey,
+  getGetWishlistQueryKey
+} from '@workspace/api-client-react';
 import { useParams } from 'wouter';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -214,7 +222,20 @@ export default function ProductDetailPage() {
                 variant="outline" 
                 size="icon" 
                 className="h-14 w-14 rounded-xl shrink-0 border-border hover:text-destructive hover:bg-destructive/10"
-                onClick={() => addToWishlistMut.mutate({ data: { productId } })}
+                onClick={() =>
+  addToWishlistMut.mutate(
+    { productId },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: getGetWishlistQueryKey(),
+        });
+
+        toast.success("Added to wishlist");
+      },
+    }
+  )
+}
               >
                 <Heart className="w-6 h-6" />
               </Button>

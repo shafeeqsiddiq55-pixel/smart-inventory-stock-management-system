@@ -35,11 +35,10 @@ export function AdminSidebar() {
   const logoutMutation = useLogoutUser();
 
   const handleLogout = () => {
+    logout();
+    setLocation('/admin/login', { replace: true });
     logoutMutation.mutate(undefined, {
-      onSuccess: () => {
-        logout();
-        setLocation('/admin/login');
-      }
+      onError: () => undefined,
     });
   };
 
@@ -49,7 +48,7 @@ export function AdminSidebar() {
         <Link href="/" className="flex items-center gap-2 group w-full">
           <Leaf className="w-5 h-5 text-sidebar-primary-foreground" />
           <span className="font-serif text-xl font-bold tracking-tight">
-            Natura Admin
+            ARK PALAMUTHIR NILAYAM Admin
           </span>
         </Link>
       </div>
@@ -84,7 +83,7 @@ export function AdminSidebar() {
           onClick={handleLogout}
         >
           <LogOut className="w-4 h-4" />
-          Log out
+          Sign Out
         </Button>
       </div>
     </aside>

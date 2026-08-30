@@ -9,10 +9,7 @@ import { Package, ChevronRight, Clock, CheckCircle2, Truck, XCircle } from 'luci
 
 export default function CustomerOrdersPage() {
   const { isAuthenticated } = useAuth();
-  const { data: ordersData, isLoading } = useListOrders({
-    query: { enabled: isAuthenticated }
-  });
-
+  const { data: ordersData, isLoading } = useListOrders();
   const getStatusIcon = (status: string) => {
     switch(status) {
       case 'pending': return <Clock className="w-5 h-5 text-amber-500" />;
@@ -41,7 +38,7 @@ export default function CustomerOrdersPage() {
               <div key={i} className="h-32 bg-muted rounded-2xl animate-pulse"></div>
             ))}
           </div>
-        ) : !ordersData || ordersData.orders.length === 0 ? (
+        ) : !ordersData || ordersData.length === 0? (
           <div className="text-center py-20 max-w-md mx-auto border rounded-3xl bg-card">
             <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center mx-auto mb-6 text-muted-foreground">
               <Package className="w-12 h-12" />
@@ -56,7 +53,7 @@ export default function CustomerOrdersPage() {
           </div>
         ) : (
           <div className="space-y-6 max-w-4xl mx-auto">
-            {ordersData.orders.map((order) => (
+            {ordersData.map((order: any) => (
               <div key={order.id} className="bg-card border rounded-2xl overflow-hidden hover:shadow-md transition-shadow">
                 <div className="p-4 sm:p-6 border-b bg-muted/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div className="flex items-center gap-4">
@@ -88,7 +85,7 @@ export default function CustomerOrdersPage() {
                     </Badge>
                   </div>
                   <div className="flex flex-wrap gap-3">
-                    {order.items.slice(0, 4).map((item, idx) => (
+                    {order.items.slice(0, 4).map((item: any, idx: number) => (
                       <div key={idx} className="flex items-center gap-3 bg-muted/30 p-2 pr-4 rounded-xl border">
                         <div className="w-12 h-12 bg-muted rounded-lg overflow-hidden shrink-0">
                           {item.productImage && <img src={item.productImage} className="w-full h-full object-cover" />}

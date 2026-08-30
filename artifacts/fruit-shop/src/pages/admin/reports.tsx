@@ -8,7 +8,9 @@ import { useState } from 'react';
 
 export default function AdminReportsPage() {
   const [year, setYear] = useState(new Date().getFullYear());
-  const { data: salesData, isLoading } = useGetSalesChart({ params: { year } });
+  const { data: salesData, isLoading } = useGetSalesChart({
+  year,
+});
 
   return (
     <AdminLayout>

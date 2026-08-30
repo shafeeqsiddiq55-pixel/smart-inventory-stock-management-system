@@ -20,7 +20,9 @@ export default function AboutPage() {
           <h2 className="font-serif text-3xl text-foreground text-center mb-8">Rooted in Nature, Grown with Care</h2>
           
           <p className="text-muted-foreground leading-relaxed text-center mb-12">
-            Founded in 2010, Natura began with a simple mission: to make premium, farm-fresh produce accessible to everyone. What started as a small family orchard has grown into a collective of passionate farmers dedicated to sustainable agriculture and uncompromising quality.
+            ARK PALAMUTHIR NILAYAM is a trusted fruit and dry fruits store with over 20 years of experience in serving quality products to our customers. Over the years, we have built a strong reputation through our commitment to freshness, quality, and customer satisfaction.
+            We carefully select fresh fruits and premium dry fruits to ensure that every product we offer meets our quality standards. Our goal is to provide customers with fresh, healthy, and high-quality products at reasonable prices.
+            With the trust and support of our customers over the years, ARK PALAMUTHIR NILAYAM continues to grow while maintaining the values that have made us a trusted name in the community.
           </p>
 
           <div className="grid sm:grid-cols-2 gap-12 my-16">

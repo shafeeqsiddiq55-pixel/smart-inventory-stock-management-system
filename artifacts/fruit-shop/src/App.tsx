@@ -3,8 +3,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from 'sonner';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import { ThemeProvider } from 'next-themes';
-import '@/lib/api-auth'; // Initialize API client with token from localStorage
+import '@/lib/api-auth';
 import { AuthProvider } from '@/hooks/use-auth';
+
+// Custom cursor
+import { CustomCursor } from '@/components/ui/custom-cursor';
 
 // Import pages
 import HomePage from '@/pages/customer/home';
@@ -16,6 +19,7 @@ import CheckoutPage from '@/pages/customer/checkout';
 import CustomerOrdersPage from '@/pages/customer/orders';
 import OrderDetailPage from '@/pages/customer/order-detail';
 import LoginPage from '@/pages/auth/login';
+import LoginChoicePage from '@/pages/auth/login-choice';
 import RegisterPage from '@/pages/auth/register';
 import AdminLoginPage from '@/pages/admin/login';
 import AdminDashboard from '@/pages/admin/dashboard';
@@ -29,6 +33,7 @@ import ProfilePage from '@/pages/customer/profile';
 import AboutPage from '@/pages/customer/about';
 import ContactPage from '@/pages/customer/contact';
 import FaqPage from '@/pages/customer/faq';
+import FruitAssistantPage from '@/pages/customer/fruit-assistant';
 import AdminCategoriesPage from '@/pages/admin/categories';
 import AdminCustomersPage from '@/pages/admin/customers';
 import AdminInventoryPage from '@/pages/admin/inventory';
@@ -57,18 +62,20 @@ function Router() {
       <Route path="/checkout" component={CheckoutPage} />
       <Route path="/orders" component={CustomerOrdersPage} />
       <Route path="/orders/:id" component={OrderDetailPage} />
-      
+
       {/* Informational Pages */}
       <Route path="/categories" component={CategoriesPage} />
       <Route path="/profile" component={ProfilePage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/contact" component={ContactPage} />
       <Route path="/faq" component={FaqPage} />
+      <Route path="/fruit-assistant" component={FruitAssistantPage} />
 
       {/* Auth Routes */}
-      <Route path="/login" component={LoginPage} />
+      <Route path="/login" component={LoginChoicePage} />
+      <Route path="/customer-login" component={LoginPage} />
       <Route path="/register" component={RegisterPage} />
-      
+
       {/* Admin Routes */}
       <Route path="/admin/login" component={AdminLoginPage} />
       <Route path="/admin" component={AdminDashboard} />
@@ -82,7 +89,7 @@ function Router() {
       <Route path="/admin/coupons" component={AdminCouponsPage} />
       <Route path="/admin/messages" component={AdminMessagesPage} />
       <Route path="/admin/reports" component={AdminReportsPage} />
-      
+
       <Route component={NotFound} />
     </Switch>
   );
@@ -90,14 +97,29 @@ function Router() {
 
 function App() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="light"
+      enableSystem={false}
+    >
       <AuthProvider>
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
-            <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+
+            {/* Custom mouse cursor */}
+            <CustomCursor />
+
+            <WouterRouter
+              base={import.meta.env.BASE_URL.replace(/\/$/, '')}
+            >
               <Router />
             </WouterRouter>
-            <Toaster richColors position="top-right" />
+
+            <Toaster
+              richColors
+              position="top-right"
+            />
+
           </TooltipProvider>
         </QueryClientProvider>
       </AuthProvider>

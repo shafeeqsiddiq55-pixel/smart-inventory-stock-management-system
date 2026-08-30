@@ -28,9 +28,9 @@ export default function AdminProductsPage() {
   const queryClient = useQueryClient();
 
   const { data: productsData, isLoading } = useListProducts({
-    query: { queryKey: ['adminProducts', search] },
-    params: { search: search || undefined, limit: 50 }
-  });
+  search: search || undefined,
+  limit: 50,
+});
 
   const deleteMut = useDeleteProduct();
 

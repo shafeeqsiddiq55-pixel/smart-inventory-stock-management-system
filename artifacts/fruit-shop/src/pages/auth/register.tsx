@@ -54,13 +54,13 @@ export default function RegisterPage() {
             <Leaf className="w-5 h-5" />
           </div>
           <span className="font-serif text-2xl font-bold tracking-tight text-foreground">
-            Natura
+            ARK PALAMUTHIR NILAYAM
           </span>
         </Link>
 
         <div className="w-full max-w-md">
           <h1 className="text-3xl font-serif font-bold mb-2 text-foreground">Create Account</h1>
-          <p className="text-muted-foreground mb-8">Join Natura to shop premium fruits and track orders.</p>
+          <p className="text-muted-foreground mb-8">Join ARK PALAMUTHIR NILAYAM to shop premium fruits and track orders.</p>
 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">

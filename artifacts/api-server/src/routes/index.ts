@@ -9,8 +9,7 @@ import ordersRouter from "./orders";
 import reviewsRouter from "./reviews";
 import couponsRouter from "./coupons";
 import contactRouter from "./contact";
-import adminRouter from "./admin";
-
+import adminRouter from "./admin";import fruitAssistantRouter from "./fruit-assistant";
 const router: IRouter = Router();
 
 router.use(healthRouter);
@@ -23,6 +22,7 @@ router.use(ordersRouter);
 router.use(reviewsRouter);
 router.use(couponsRouter);
 router.use(contactRouter);
+router.use(fruitAssistantRouter);
 router.use(adminRouter);
 
 export default router;

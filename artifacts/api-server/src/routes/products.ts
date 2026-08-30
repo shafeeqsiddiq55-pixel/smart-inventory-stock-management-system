@@ -1,5 +1,5 @@
 import { Router, type IRouter } from "express";
-import { eq, and, gte, lte, like, sql, desc, asc } from "drizzle-orm";
+import { eq, and, gte, lte, ilike, sql, desc, asc } from "drizzle-orm";
 import { db, productsTable, categoriesTable, reviewsTable } from "@workspace/db";
 import { requireAdmin } from "../middlewares/authenticate";
 
@@ -73,7 +73,7 @@ router.get("/products", async (req, res): Promise<void> => {
   const { categoryId, search, minPrice, maxPrice, featured, organic, inStock, sortBy, page, limit } = req.query;
   const conditions = [];
   if (categoryId) conditions.push(eq(productsTable.categoryId, parseInt(String(categoryId), 10)));
-  if (search) conditions.push(like(productsTable.name, `%${String(search)}%`));
+  if (search) conditions.push(ilike(productsTable.name, `%${String(search)}%`));
   if (minPrice) conditions.push(gte(productsTable.price, String(minPrice)));
   if (maxPrice) conditions.push(lte(productsTable.price, String(maxPrice)));
   if (featured === "true") conditions.push(eq(productsTable.isFeatured, true));
@@ -84,11 +84,27 @@ router.get("/products", async (req, res): Promise<void> => {
   const limitNum = parseInt(String(limit ?? "12"), 10);
   const offset = (pageNum - 1) * limitNum;
 
-  let orderBy: ReturnType<typeof asc | typeof desc> = desc(productsTable.createdAt);
-  if (sortBy === "price") orderBy = asc(productsTable.price);
-  else if (sortBy === "name") orderBy = asc(productsTable.name);
-  else if (sortBy === "rating") orderBy = desc(productsTable.salesCount);
-  else if (sortBy === "bestseller") orderBy = desc(productsTable.salesCount);
+ let orderBy: ReturnType<typeof asc | typeof desc> = desc(productsTable.createdAt);
+
+if (sortBy === "price") {
+  orderBy = asc(productsTable.price);
+}
+
+else if (sortBy === "price-desc") {
+  orderBy = desc(productsTable.price);
+}
+
+else if (sortBy === "rating") {
+  orderBy = desc(productsTable.salesCount);
+}
+
+else if (sortBy === "bestseller") {
+  orderBy = desc(productsTable.salesCount);
+}
+
+else {
+  orderBy = desc(productsTable.createdAt);
+}
 
   const where = conditions.length > 0 ? and(...conditions) : undefined;
 

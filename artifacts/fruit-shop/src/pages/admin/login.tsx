@@ -66,7 +66,7 @@ export default function AdminLoginPage() {
                   <FormItem>
                     <FormLabel>Admin Email</FormLabel>
                     <FormControl>
-                      <Input placeholder="admin@natura.com" type="email" className="h-11 bg-muted/50" {...field} />
+                      <Input placeholder="admin@ARK PALAMUTHIR NILAYAM.com" type="email" className="h-11 bg-muted/50" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

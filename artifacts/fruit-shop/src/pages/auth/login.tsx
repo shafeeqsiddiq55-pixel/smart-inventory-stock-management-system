@@ -59,7 +59,7 @@ export default function LoginPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent z-10" />
         <div className="absolute bottom-16 left-12 right-12 z-20 text-primary-foreground">
-          <h2 className="text-4xl font-serif font-bold mb-4">Welcome back to Natura</h2>
+          <h2 className="text-4xl font-serif font-bold mb-4">Welcome back to ARK PALAMUTHIR NILAYAM</h2>
           <p className="text-primary-foreground/80 text-lg max-w-md">
             Sign in to access your orders, saved items, and exclusive member offers on premium fruits.
           </p>
@@ -73,7 +73,7 @@ export default function LoginPage() {
             <Leaf className="w-5 h-5" />
           </div>
           <span className="font-serif text-2xl font-bold tracking-tight text-foreground">
-            Natura
+            ARK PALAMUTHIR NILAYAM
           </span>
         </Link>
 
@@ -128,6 +128,11 @@ export default function LoginPage() {
             Don't have an account?{' '}
             <Link href="/register" className="text-primary font-bold hover:underline">
               Create one now
+            </Link>
+          </div>
+          <div className="mt-4 text-center text-sm">
+            <Link href="/admin/login" className="text-primary font-bold hover:underline">
+              Admin Login
             </Link>
           </div>
         </div>

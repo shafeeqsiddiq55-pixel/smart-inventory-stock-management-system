@@ -41,9 +41,12 @@ export default function AdminProductForm() {
   const queryClient = useQueryClient();
 
   const { data: categories } = useListCategories();
-  const { data: product, isLoading: productLoading } = useGetProduct(productId, { 
-    query: { enabled: isEdit } 
-  });
+  const { data: product, isLoading: productLoading } = useGetProduct(productId, {
+  query: {
+    queryKey: ["product", productId],
+    enabled: isEdit,
+  },
+});
 
   const createMut = useCreateProduct();
   const updateMut = useUpdateProduct();

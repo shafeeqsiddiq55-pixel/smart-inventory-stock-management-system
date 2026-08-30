@@ -3,9 +3,21 @@ import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/use-auth';
 import { Input } from '@/components/ui/input';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { useLocation } from 'wouter';
+import { useLogoutUser } from '@workspace/api-client-react';
 
 export function AdminHeader({ onMenuClick }: { onMenuClick: () => void }) {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
+  const [, setLocation] = useLocation();
+  const logoutMutation = useLogoutUser();
+
+  const handleLogout = () => {
+    logout();
+    setLocation('/admin/login', { replace: true });
+    logoutMutation.mutate(undefined, {
+      onError: () => undefined,
+    });
+  };
 
   return (
     <header className="h-16 bg-card border-b flex items-center justify-between px-4 sm:px-6 z-30 sticky top-0">
@@ -46,7 +58,9 @@ export function AdminHeader({ onMenuClick }: { onMenuClick: () => void }) {
             <DropdownMenuItem>Profile Settings</DropdownMenuItem>
             <DropdownMenuItem>System Settings</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="text-destructive focus:text-destructive">Sign out</DropdownMenuItem>
+            <DropdownMenuItem className="text-destructive focus:text-destructive cursor-pointer" onClick={handleLogout}>
+              Sign Out
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>

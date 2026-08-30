@@ -23,8 +23,26 @@ const categoryImages: Record<string, string> = {
 };
 
 export default function HomePage() {
-  const { data: featuredProducts, isLoading: featuredLoading } = useGetFeaturedProducts();
-  const { data: categories, isLoading: categoriesLoading } = useListCategories();
+ const { data: featuredProductsData, isLoading: featuredLoading } = useGetFeaturedProducts();
+
+console.log("Featured Products API:", featuredProductsData);
+
+const featuredProducts = Array.isArray(featuredProductsData)
+  ? featuredProductsData
+  : Array.isArray((featuredProductsData as any)?.data)
+    ? (featuredProductsData as any).data
+    : [];
+  const { data: categoriesData, isLoading: categoriesLoading } = useListCategories();
+
+console.log("Categories API Response:", categoriesData);
+
+const categories = Array.isArray(categoriesData)
+  ? categoriesData
+  : Array.isArray((categoriesData as any)?.data)
+    ? (categoriesData as any).data
+    : Array.isArray((categoriesData as any)?.categories)
+      ? (categoriesData as any).categories
+      : [];
 
   return (
     <CustomerLayout>
@@ -74,7 +92,7 @@ export default function HomePage() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 divide-y md:divide-y-0 md:divide-x divide-border">
             {[
-              { icon: Truck, title: "Free Delivery", desc: "On orders over $50" },
+              { icon: Truck, title: "Free Delivery", desc: "On orders over ₹300" },
               { icon: ShieldCheck, title: "100% Secure", desc: "Safe payment processing" },
               { icon: Leaf, title: "Farm Fresh", desc: "Sourced directly daily" },
               { icon: RefreshCw, title: "Easy Returns", desc: "No questions asked" }
@@ -106,7 +124,7 @@ export default function HomePage() {
               [...Array(6)].map((_, i) => (
                 <div key={i} className="h-64 rounded-2xl bg-muted animate-pulse" />
               ))
-            ) : categories?.map((category) => (
+            ) : categories?.map((category: any) => (
               <Link key={category.id} href={`/products?category=${category.slug}`} className="group block relative h-72 rounded-2xl overflow-hidden">
                 <div className="absolute inset-0">
                   <img 
@@ -151,7 +169,7 @@ export default function HomePage() {
               [...Array(4)].map((_, i) => (
                 <div key={i} className="h-96 rounded-2xl bg-muted animate-pulse" />
               ))
-            ) : featuredProducts?.slice(0, 4).map((product) => (
+            ) : featuredProducts?.slice(0, 4).map((product: any) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

@@ -14,10 +14,8 @@ export default function AdminOrdersPage() {
   const queryClient = useQueryClient();
 
   const { data: ordersData, isLoading } = useAdminListOrders({
-    query: { queryKey: ['adminOrders', statusFilter] },
-    params: { status: statusFilter !== 'all' ? statusFilter : undefined }
-  });
-
+  status: statusFilter !== "all" ? statusFilter : undefined,
+});
   const updateStatusMut = useUpdateOrderStatus();
 
   const handleStatusChange = (orderId: number, newStatus: OrderStatusUpdateStatus) => {
@@ -92,12 +90,12 @@ export default function AdminOrdersPage() {
                 <TableRow>
                   <TableCell colSpan={7} className="h-32 text-center text-muted-foreground">Loading orders...</TableCell>
                 </TableRow>
-              ) : ordersData?.orders.length === 0 ? (
+              ) : ordersData?.length === 0 ? (
                 <TableRow>
                   <TableCell colSpan={7} className="h-32 text-center text-muted-foreground">No orders found.</TableCell>
                 </TableRow>
               ) : (
-                ordersData?.orders.map((order) => (
+                ordersData?.map((order) => (
                   <TableRow key={order.id}>
                     <TableCell className="font-medium">#{order.id}</TableCell>
                     <TableCell className="text-muted-foreground">

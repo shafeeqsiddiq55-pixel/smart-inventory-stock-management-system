@@ -78,7 +78,7 @@ export default function CheckoutPage() {
             </div>
             <h1 className="text-3xl font-serif font-bold text-foreground mb-4">Order Confirmed!</h1>
             <p className="text-muted-foreground mb-8">
-              Thank you for choosing Natura. Your premium fruits are being prepared with care and will be on their way soon.
+              Thank you for choosing ARK PALAMUTHIR NILAYAM. Your premium fruits are being prepared with care and will be on their way soon.
             </p>
             <div className="space-y-3">
               <Button onClick={() => setLocation('/orders')} className="w-full rounded-xl h-12">

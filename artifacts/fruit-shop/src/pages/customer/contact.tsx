@@ -6,7 +6,6 @@ import { Textarea } from '@/components/ui/textarea';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { useState } from 'react';
 import { toast } from 'sonner';
-import { Label } from 'recharts';
 
 export default function ContactPage() {
   const [name, setName] = useState('');
@@ -39,7 +38,7 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-foreground mb-4">Get in Touch</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Have a question about our products, an order, or wholesale pricing? We'd love to hear from you.
+            Need fresh fruits, vegetables, or grocery items? Contact ARK PALAMUTHIR NILAYAM. We're happy to help you with orders and enquiries.
           </p>
         </div>
       </div>
@@ -57,8 +56,16 @@ export default function ContactPage() {
                   <MapPin className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="font-bold mb-1">Our Headquarters</h3>
-                  <p className="text-muted-foreground">123 Market Street, Suite 100<br/>San Francisco, CA 94105</p>
+                <h3 className="font-bold mb-1">Our Store</h3>
+                <p className="text-muted-foreground">
+                  ARK PALAMUTHIR NILAYAM
+                  <br />
+                  Anna Silai Road,
+                  <br />
+                  Karumandisellipalayam,
+                  <br />
+                  Tamil Nadu - 638052
+                </p>
                 </div>
               </div>
               
@@ -68,7 +75,9 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-bold mb-1">Phone Number</h3>
-                  <p className="text-muted-foreground">+1 (555) 123-4567<br/>Toll-free: 1-800-NATURA</p>
+                  <p className="text-muted-foreground">
+                    +91 98659 73999
+                  </p>
                 </div>
               </div>
               
@@ -78,7 +87,9 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-bold mb-1">Email Address</h3>
-                  <p className="text-muted-foreground">support@naturafruits.com<br/>wholesale@naturafruits.com</p>
+                  <p className="text-muted-foreground">
+                    shafeeqsiddiq55@gmail.com
+                  </p>
                 </div>
               </div>
               
@@ -88,7 +99,9 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <h3 className="font-bold mb-1">Working Hours</h3>
-                  <p className="text-muted-foreground">Monday - Friday: 8am - 6pm PST<br/>Saturday: 9am - 2pm PST</p>
+                  <p className="text-muted-foreground">
+                    Monday - Sunday: 8:30 AM - 9:30 PM
+                  </p>
                 </div>
               </div>
             </div>
@@ -99,19 +112,27 @@ export default function ContactPage() {
             <h2 className="text-2xl font-serif font-bold mb-6">Send a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Your Name</Label>
+                <label htmlFor="name" className="text-sm font-medium">
+                  Your Name
+                  </label>
                 <Input id="name" value={name} onChange={e => setName(e.target.value)} required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Email Address</Label>
+                <label htmlFor="email" className="text-sm font-medium">
+                  Email Address
+                  </label>
                 <Input id="email" type="email" value={email} onChange={e => setEmail(e.target.value)} required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="subject">Subject</Label>
+                <label htmlFor="subject" className="text-sm font-medium">
+                  Subject
+                  </label>
                 <Input id="subject" value={subject} onChange={e => setSubject(e.target.value)} required />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="message">Message</Label>
+                <label htmlFor="message" className="text-sm font-medium">
+                  Message
+                  </label>
                 <Textarea 
                   id="message" 
                   className="min-h-[150px] resize-none" 

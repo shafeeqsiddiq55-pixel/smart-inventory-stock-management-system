@@ -13,7 +13,7 @@ export function AdminLayout({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (!isAuthenticated || !isAdmin) {
-      setLocation('/admin/login');
+      setLocation('/admin/login', { replace: true });
     }
   }, [isAuthenticated, isAdmin, setLocation]);
 

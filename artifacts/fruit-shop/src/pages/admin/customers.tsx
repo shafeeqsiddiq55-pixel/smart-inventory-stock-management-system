@@ -14,9 +14,8 @@ export default function AdminCustomersPage() {
   const queryClient = useQueryClient();
   
   const { data: customers, isLoading } = useAdminListCustomers({
-    query: { queryKey: ['adminCustomers', search] },
-    params: { search: search || undefined }
-  });
+  search: search || undefined,
+});
 
   const updateMut = useUpdateCustomerStatus();
 
