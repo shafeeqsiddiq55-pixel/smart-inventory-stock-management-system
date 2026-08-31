@@ -5,6 +5,6 @@ import App from "./App";
 import "./index.css";
 
 // Backend API URL
-setBaseUrl("http://localhost:8080");
+setBaseUrl("https://smart-inventory-stock-management-system.onrender.com");
 
 createRoot(document.getElementById("root")!).render(<App />);
