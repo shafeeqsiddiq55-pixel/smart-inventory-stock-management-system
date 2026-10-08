@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: smart-inventory-stock-management-system
+    runtime: node
+    plan: free
+    buildCommand: pnpm install --frozen-lockfile && pnpm run build
+    startCommand: pnpm --dir lib/db push && pnpm --dir artifacts/api-server start
+    healthCheckPath: /api/healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+    buildEnvVars:
+      - key: NODE_ENV
+        value: production

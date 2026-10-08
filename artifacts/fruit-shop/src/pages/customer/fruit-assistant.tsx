@@ -60,9 +60,7 @@ export default function FruitAssistantPage() {
     setConversation((current) => [...current, { id: Date.now(), role: 'user', text: trimmed }]);
 
     try {
-      const assistantUrl = new URL('/api/fruit-assistant', 'https://smart-inventory-stock-management-system.onrender.com').toString();
-
-      const res = await fetch(assistantUrl, {
+      const res = await fetch('/api/fruit-assistant', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ question: trimmed }),
